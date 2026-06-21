@@ -19,6 +19,22 @@ export const PeopleFilters = () => {
     setSearchParams(params);
   };
 
+  const hundleAllCenturies = () => {
+    const params = new URLSearchParams(searchParams);
+
+    params.delete('centuries');
+    setSearchParams(params);
+  };
+
+  const hundleReset = () => {
+    const params = new URLSearchParams(searchParams);
+
+    params.delete('query');
+    params.delete('sex');
+    params.delete('centuries');
+    setSearchParams(params);
+  };
+
   const hundleCentury = (c: string) => {
     const params = new URLSearchParams(searchParams);
 
@@ -109,7 +125,7 @@ export const PeopleFilters = () => {
             <a
               data-cy="centuryALL"
               className="button is-success is-outlined"
-              href="#/people"
+              onClick={hundleAllCenturies}
             >
               All
             </a>
@@ -118,7 +134,10 @@ export const PeopleFilters = () => {
       </div>
 
       <div className="panel-block">
-        <a className="button is-link is-outlined is-fullwidth" href="#/people">
+        <a
+          className="button is-link is-outlined is-fullwidth"
+          onClick={hundleReset}
+        >
           Reset all filters
         </a>
       </div>
